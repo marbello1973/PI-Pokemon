@@ -6,9 +6,11 @@ module.exports = (sequelize) => {
   sequelize.define(
     "type",
     {
-      uid: {
-        type: DataTypes.UUID,
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
+        allowNull: false,
       },
       nombre: {
         type: DataTypes.STRING,
