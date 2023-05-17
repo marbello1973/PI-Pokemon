@@ -1,13 +1,14 @@
 const { getTypes } = require("../controller/getControllerTypes");
 
-const typeHandler = async (req, res) => {
-  const { id, nombre } = req.body;
+const getHandler = async (req, res) => {
+  const { nombre } = req.body;
   try {
-    const types = await getTypes(id, nombre);
-    res.status(200).json(types);
+    const type = await getTypes(nombre);
+    console.log(type);
+    res.status(200).json(type);
   } catch (error) {
     res.status(400).json({ error: message.error });
   }
 };
 
-module.exports = { typeHandler };
+module.exports = { getHandler };

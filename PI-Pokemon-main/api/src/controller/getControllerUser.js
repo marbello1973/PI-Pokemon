@@ -2,10 +2,10 @@ const { Pokemon, Type } = require("../db");
 const { Op } = require("sequelize");
 const axios = require("axios");
 
-//esta funcion me reccore la api y me sirve para filtrar por item
+//esta funcion itera toda la api pars ser filtrada
 getApiInfo = async () => {
   const strPokemons = [];
-  const URL = `https://pokeapi.co/api/v2/pokemon?limit=12`;
+  const URL = `https://pokeapi.co/api/v2/pokemon?limit=100`;
   const pokemonApi = await axios.get(URL);
   const pokemonsUrl = await pokemonApi.data.results.map((el) => el.url);
   for (let i = 0; i < pokemonsUrl.length; i++) {
@@ -29,6 +29,25 @@ getApiInfo = async () => {
   return strPokemons;
 };
 
+//funcion recorre la base de datos local
+const getDbInfo = async () => {
+  return await Pokemon.findAll({
+    /* include: { //esta funcion me incluye los types
+      model: Type,
+    }, */
+  });
+};
+
+//funcion unifica todo lo que tiene la api y la base de datos
+const getAllUsers = async () => {
+  //const bDD = await Pokemon.findAll();
+  const apiUser = await axios.get(`https://pokeapi.co/api/v2/pokemon`);
+  const dataApi = await getApiInfo(apiUser);
+  const dbInfo = await getDbInfo();
+  // console.log(dataApi, bDD);
+  return [...dbInfo, ...dataApi];
+};
+
 //funcion me crea un usuario
 const createUser = async (
   nombre,
@@ -40,16 +59,47 @@ const createUser = async (
   altura,
   peso
 ) => {
-  let newUser = await Pokemon.create({
-    nombre: nombre.toLowerCase(),
-    imagen,
-    vida,
-    ataque,
-    defensa,
-    velocidad,
-    altura,
-    peso,
+  //valida si existe el usuario con el nombre
+  const userBD = await Pokemon.findOne({
+    where: {
+      nombre: nombre,
+      vida: vida,
+      ataque: ataque,
+      defensa: defensa,
+      velocidad: velocidad,
+      altura: altura,
+      peso: peso,
+    },
   });
+
+  if (userBD) {
+    return ` 
+    nombre ${nombre},
+    vida ${vida},
+    ataque ${ataque},
+    defensa ${defensa},
+    velocidad ${velocidad},
+    altura ${altura},
+    peso ${peso} 
+    Existe un registro ${nombre} en la base de datos`;
+  } else {
+    let newUser = await Pokemon.create({
+      nombre: nombre.toLowerCase(),
+      imagen,
+      vida,
+      ataque,
+      defensa,
+      velocidad,
+      altura,
+      peso,
+    });
+
+    /* if (type.length > 0) {
+      const typeDb = await Type.findAll({ where: { nombre: type } });
+      await newUser.addType(typeDb);
+    } */
+    return newUser;
+  }
 };
 
 //funvion que me busca por id
@@ -78,20 +128,12 @@ const getUserById = async (id, source) => {
       : await Pokemon.findByPk(id, {
           include: {
             model: Type,
-            attributes: ["id", "nombre"],
           },
         });
   return user;
 };
 
 //esta funcion me retorna todos los objetos de la base de datos api y bdd
-const getAllUsers = async () => {
-  const bDD = await Pokemon.findAll();
-  const apiUser = await axios.get(`https://pokeapi.co/api/v2/pokemon`);
-  const dataApi = await getApiInfo(apiUser);
-  // console.log(dataApi, bDD);
-  return [...bDD, ...dataApi];
-};
 
 //esta funcion me busca por nombre dentro de la api o en la base de datos
 const getAllUsersName = async (nombre) => {

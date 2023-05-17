@@ -49,6 +49,6 @@ module.exports = (sequelize) => {
         defaultValue: true,
       },
     },
-    { timestamps: true }
+    { timestamps: true, createdAt: false, updatedAt: false }
   );
 };
