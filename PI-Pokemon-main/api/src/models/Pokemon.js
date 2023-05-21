@@ -7,48 +7,55 @@ module.exports = (sequelize) => {
     "pokemon",
     {
       id: {
+        //id
         type: DataTypes.UUID,
-        primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
+        allowNull: false,
+        primaryKey: true,
       },
-      nombre: {
+      name: {
+        //nombre
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          notNull: { msg: `Name is required` },
+        },
       },
-      imagen: {
+      image: {
+        //imagen
         type: DataTypes.STRING,
-        allowNull: false,
       },
-      vida: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      ataque: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      defensa: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      velocidad: {
+      hp: {
+        //puntos de vida
         type: DataTypes.INTEGER,
-        allowNull: false,
       },
-      altura: {
+      attack: {
+        //ataque
         type: DataTypes.INTEGER,
-        allowNull: false,
       },
-      peso: {
+      defense: {
+        //defensa
         type: DataTypes.INTEGER,
-        allowNull: false,
       },
-      created: {
+      speed: {
+        //velocidad
+        type: DataTypes.INTEGER,
+      },
+      height: {
+        //altura
+        type: DataTypes.INTEGER,
+      },
+      weight: {
+        //peso
+        type: DataTypes.INTEGER,
+      },
+      createdDB: {
+        //creado en la base de datos
         type: DataTypes.BOOLEAN,
-        allowNull: false,
         defaultValue: true,
+        allowNull: false,
       },
     },
-    { timestamps: true, createdAt: false, updatedAt: false }
+    { timestamps: false, createdAt: false, updatedAt: false }
   );
 };
