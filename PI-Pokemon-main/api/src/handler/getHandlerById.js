@@ -1,8 +1,9 @@
 const { getControllerById } = require("../controller/getControllerById.js");
 const getHandlerById = async (req, res) => {
+  const { id } = req.params;
+  const source = isNaN(id) ? "bdd" : "api";
   try {
-    const { id } = req.params;
-    const pokemons = await getControllerById(id);
+    const pokemons = await getControllerById(id, source);
     res.status(200).json(pokemons);
   } catch (error) {
     res.status(400).json({ msg: error.message });
@@ -19,4 +20,16 @@ const { id } = req.params;
       ? res.status(200).json(pokeId)
       : res.status(404).send("Pokemon not found");
   }
+*/
+
+/*
+const getHandlerById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const pokemons = await getControllerById(id);
+    res.status(200).json(pokemons);
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+};
 */
