@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.containerImage {
+  position: absolute;
+  top: -55px;
+  left: -10px;
+}
+
+.imagen {
+  width: 400px;
+  height: auto;
+}
+
+@media only screen and (max-width: 780px) {
+  .imagen {
+    width: 250px;
+    height: auto;
+  }
+}
