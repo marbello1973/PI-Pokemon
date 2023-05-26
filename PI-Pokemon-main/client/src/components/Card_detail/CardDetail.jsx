@@ -12,6 +12,9 @@ function CardDetail(props) {
           <div className={styles.name}>
             <p>Name:{props.name}</p>
           </div>
+          <div className={styles.name}>
+            <p>Attack:{props.attack}</p>
+          </div>
           <div className={styles.type}>
             <p>Type:{props.createDB}</p>
           </div>

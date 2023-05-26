@@ -1,8 +1,15 @@
-import React from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getPokemons } from "../../redux/action/action";
 import styles from "./Card.module.css";
 import CardContainer from "../../components/Card_container/CardContainer";
 
-function Cards() {
+function Card() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getPokemons());
+    // console.log(dispatch(getPokemons()));
+  }, [dispatch]);
   return (
     <div>
       <div>Cards</div>
@@ -12,5 +19,4 @@ function Cards() {
     </div>
   );
 }
-
-export default Cards;
+export default Card;

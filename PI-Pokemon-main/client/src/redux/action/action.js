@@ -1,22 +1,26 @@
 import axios from "axios";
 import {
   GET_POKEMONS,
-  GET_POKEMONSNAME,
-  GET_POKEMONS_ID,
-  FILTER_POKEMONS_TYPES,
+  // GET_POKEMONSNAME,
+  // GET_POKEMONS_ID,
+  // FILTER_POKEMONS_TYPES,
 } from "./action-types";
 
-export function getPokemons() {
+export const getPokemons = () => {
   return async function (dispatch) {
-    console.log(dispatch);
-    const response = await axios.get("http://localhost:3001/pokemon");
-    console.log(response.data);
-    return dispatch({
-      type: GET_POKEMONS,
-      payload: response.data,
-    });
+    try {
+      const response = await axios.get("http://localhost:3001/pokemon");
+      const pokemons = response.data;
+      // console.log(pokemons);
+      return dispatch({
+        type: GET_POKEMONS,
+        payload: pokemons,
+      });
+    } catch (error) {
+      console.log({ error: error.message });
+    }
   };
-}
+};
 
 /* export const getPokemons = (res) => async (dispatch) => {
   try {
