@@ -1,16 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { filterApiBdd } from "../../../redux/action/action";
 
 function Filterorigin() {
+  const pokemon = useSelector((state) => state.pokemons);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(filterApiBdd(pokemon));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
+
+  const handlerFilterApiBdd = (event) => {
+    dispatch(filterApiBdd(event.target.value));
+  };
+
   return (
     <div>
       <div>
-        <label title="filter-type">Filtrar por origen api o bdd</label>
+        <label title="filter-type">Filtrar por Api - Bdd</label>
       </div>
       <div>
-        <select>
-          <option value="">Filtra por origen</option>
-          <option value="api">Api</option>
-          <option value="bdd">Base de datos</option>
+        <select onChange={(event) => handlerFilterApiBdd(event)}>
+          <option value="All">All</option>
+          <option value="Api">Api</option>
+          <option value="Bdd">Bdd</option>
         </select>
       </div>
     </div>

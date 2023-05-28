@@ -1,10 +1,8 @@
 import {
   GET_POKEMONS,
   SEARCH_BY_NAME,
-  // GET_TYPES,
-  // GET_POKEMONS_ID,
   FILTER_POKEMONS_TYPES,
-  // GET_POKEMONSNAME,
+  FILTER_API_BDD,
 } from "../action/action-types";
 
 const initialState = {
@@ -41,52 +39,23 @@ const rootReducer = (state = initialState, action) => {
         pokemons: action.payload,
       };
 
+    case FILTER_API_BDD:
+      const pokemonApiBdd = state.allPokemons;
+      const filterApiBdd =
+        action.payload === "Bdd"
+          ? pokemonApiBdd.filter((el) => el.createdDB)
+          : pokemonApiBdd.filter((el) => !el.createdDB);
+      return {
+        ...state,
+        pokemons: action.payload === "All" ? state.allPokemons : filterApiBdd,
+      };
+
     default:
       return state;
   }
 };
 
 export default rootReducer;
-
-/*
-case GET_TYPES:
-      return {
-        ...state,
-        types: action.payload,
-      };
-*/
-
-/* const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return { ...state };
-  }
-}; */
-/*
-case GET_POKEMONS:
-      return {
-        ...state,
-        pokemons: action.payload,
-      };
-    case GET_POKEMONS_ID:
-      return {
-        ...state,
-        pokemonId: action.payload,
-      };
-    case FILTER_POKEMONS_TYPES:
-      return {
-        ...state,
-        pokemons: action.payload,
-      };
-    case GET_POKEMONSNAME:
-      return {
-        ...state,
-        pokemons: action.payload,
-      };
-    default:
-      return state;
-  }
-*/
 
 /* pokemons: [
     {

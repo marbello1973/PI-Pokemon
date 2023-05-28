@@ -5,6 +5,7 @@
   justify-content: center;
   border: 1px solid black;
   gap: 1em;
+  margin: 2em;
 }
 
 .paginado {
@@ -22,4 +23,16 @@
   justify-content: space-evenly;
   gap: 3em;
   margin-top: 2em;
+}
+
+@media only screen and (max-width: 400px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px solid black;
+    gap: 1em;
+    margin: 2em;
+  }
 }

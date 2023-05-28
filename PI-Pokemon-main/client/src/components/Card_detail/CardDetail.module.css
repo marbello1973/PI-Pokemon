@@ -5,6 +5,7 @@
   border: 1px solid black;
   display: flex;
   justify-content: center;
+  transition: 0.3s;
 }
 
 .containerImage {
@@ -29,4 +30,16 @@
 
 .type {
   border: 1px solid green;
+}
+
+@media only screen and (max-width: 400px) {
+  .container {
+    width: 150px;
+    height: 200px;
+    background: #b8b8b8;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    transition: 0.3s;
+  }
 }

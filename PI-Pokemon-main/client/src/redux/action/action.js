@@ -2,10 +2,8 @@ import axios from "axios";
 import {
   GET_POKEMONS,
   SEARCH_BY_NAME,
-  // GET_TYPES,
-  // GET_POKEMONSNAME,
-  // GET_POKEMONS_ID,
   FILTER_POKEMONS_TYPES,
+  FILTER_API_BDD,
 } from "./action-types";
 
 export const getPokemons = () => {
@@ -24,14 +22,6 @@ export const getPokemons = () => {
   };
 };
 
-export function filterType(payload) {
-  // console.log(payload);
-  return {
-    type: FILTER_POKEMONS_TYPES,
-    payload,
-  };
-}
-
 export function searchByName(name) {
   return async function (dispatch) {
     try {
@@ -49,62 +39,17 @@ export function searchByName(name) {
   };
 }
 
-/* export function searchByName(payload) {
-  return async function (dispatch) {
-    try {
-      const response = await axios.get(
-        `http://localhost:3001/pokemon?name=${payload}`
-      );
-      const pokemonName = response.data;
-      console.log(pokemonName);
-      dispatch({
-        type: SEARCH_BY_NAME,
-        payload: pokemonName,
-      });
-    } catch (error) {
-      console.log({ error: error.message });
-    }
-  };
-} */
-
-/* export function filterType() {
-  return async function (dispatch) {
-    try {
-      const response = await axios.get("http://localhost:3001/pokemon");
-      const types = response.data;
-      console.log(types);
-      dispatch({
-        type: FILTER_POKEMONS_TYPES,
-        payload: types.data,
-      });
-    } catch (error) {
-      console.log({ msg: error.message });
-    }
-  };
-} */
-
-/* export function filterType(payload) {
-  console.log(payload);
+export function filterType(payload) {
+  // console.log(payload);
   return {
     type: FILTER_POKEMONS_TYPES,
     payload,
   };
-} */
-
-/*
-export function getType() {
-  return async function (dispatch) {
-    try {
-      const response = await axios.get("http://localhost:3001/type");
-      const types = response.data;
-      return dispatch({
-        type: GET_TYPES,
-        payload: types.data,
-      });
-    } catch (error) {
-      console.log({ msg: error.message });
-    }
-  };
 }
 
-*/
+export function filterApiBdd(payload) {
+  return {
+    type: FILTER_API_BDD,
+    payload,
+  };
+}
