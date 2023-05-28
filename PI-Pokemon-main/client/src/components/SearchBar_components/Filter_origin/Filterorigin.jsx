@@ -4,10 +4,10 @@ function Filterorigin() {
   return (
     <div>
       <div>
-        <label htmlFor="filter-type">Filtrar por origen api o bdd</label>
+        <label title="filter-type">Filtrar por origen api o bdd</label>
       </div>
       <div>
-        <select for="filter-type">
+        <select>
           <option value="">Filtra por origen</option>
           <option value="api">Api</option>
           <option value="bdd">Base de datos</option>

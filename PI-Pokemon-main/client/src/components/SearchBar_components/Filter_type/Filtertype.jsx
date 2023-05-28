@@ -1,34 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { filterType } from "../../../redux/action/action";
 
 function Filtertype() {
+  const dispatch = useDispatch();
+  const pokemon = useSelector((state) => state.pokemons);
+  useEffect(() => {
+    dispatch(filterType(pokemon));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleFilter = (event) => {
+    dispatch(filterType(event.target.value));
+  };
   return (
     <div>
       <div>
-        <label htmlFor="filter-type">Filtrar por typo</label>
+        <label>Filtrar por typo</label>
       </div>
       <div>
-        <select for="filter-type">
-          <option value="">Filtra por typo</option>
-          <option value="">fighting</option>
-          <option value="">flying</option>
-          <option value="">normal</option>
-          <option value="">poison</option>
-          <option value="">ground</option>
-          <option value="">rock</option>
-          <option value="">ghost</option>
-          <option value="">bug</option>
-          <option value="">steel</option>
-          <option value="">fire</option>
-          <option value="">water</option>
-          <option value="">grass</option>
-          <option value="">electric</option>
-          <option value="">psychic</option>
-          <option value="">ice</option>
-          <option value="">dark</option>
-          <option value="">dragon</option>
-          <option value="">fairy</option>
-          <option value="">unknown</option>
-          <option value="">shadow</option>
+        <select onChange={(event) => handleFilter(event)}>
+          <option value="All">All</option>
+          <option value="fighting">fighting</option>
+          <option value="flying">flying</option>
+          <option value="normal">normal</option>
+          <option value="poison">poison</option>
+          <option value="ground">ground</option>
+          <option value="rock">rock</option>
+          <option value="ghost">ghost</option>
+          <option value="bug">bug</option>
+          <option value="steel">steel</option>
+          <option value="fire">fire</option>
+          <option value="water">water</option>
+          <option value="grass">grass</option>
+          <option value="electric">electric</option>
+          <option value="psychic">psychic</option>
+          <option value="ice">ice</option>
+          <option value="dark">dark</option>
+          <option value="dragon">dragon</option>
+          <option value="fairy">fairy</option>
+          <option value="unknown">unknown</option>
+          <option value="shadow">shadow</option>
         </select>
       </div>
     </div>

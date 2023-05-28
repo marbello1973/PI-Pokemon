@@ -1,4 +1,7 @@
 .cardDetail {
   background: rgb(230, 230, 230);
   color: rgb(75, 75, 75);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

@@ -5,9 +5,9 @@ function OrderAceDec() {
     <div>
       <div>
         <div>
-          <label htmlFor="filter-type">Ordenamiento</label>
+          <label title="filter-type">Ordenamiento acc - dec</label>
         </div>
-        <select for="filter-type">
+        <select>
           <option value="">Oredenar ascendente y descendente</option>
           <option value="api">Ascendente</option>
           <option value="bdd">Descendente</option>

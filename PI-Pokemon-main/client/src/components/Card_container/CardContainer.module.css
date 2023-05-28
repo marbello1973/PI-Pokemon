@@ -1,17 +1,23 @@
 .container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   border: 1px solid black;
   gap: 1em;
 }
 
+.paginado {
+  display: flex;
+  justify-content: space-around;
+  margin: 5px;
+  padding: 5px;
+}
+
 .cardContainer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 900px;
   border: 1px solid black;
   justify-content: space-evenly;
   gap: 3em;

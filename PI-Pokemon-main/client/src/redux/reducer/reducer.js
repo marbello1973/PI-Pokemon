@@ -1,28 +1,60 @@
 import {
   GET_POKEMONS,
+  SEARCH_BY_NAME,
+  // GET_TYPES,
   // GET_POKEMONS_ID,
-  // FILTER_POKEMONS_TYPES,
+  FILTER_POKEMONS_TYPES,
   // GET_POKEMONSNAME,
 } from "../action/action-types";
 
 const initialState = {
   pokemons: [],
+  allPokemons: [],
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_POKEMONS:
-      console.log(action.payload);
+      // console.log(action.payload);
+      return {
+        ...state,
+        pokemons: action.payload,
+        allPokemons: action.payload,
+      };
+
+    case FILTER_POKEMONS_TYPES:
+      const allPokemons = state.allPokemons;
+      const typeFilter =
+        action.payload === "All"
+          ? allPokemons
+          : allPokemons.filter((el) =>
+              el.types.find((el) => el.name === action.payload)
+            );
+      return {
+        ...state,
+        pokemons: typeFilter,
+      };
+
+    case SEARCH_BY_NAME:
       return {
         ...state,
         pokemons: action.payload,
       };
+
     default:
       return state;
   }
 };
 
 export default rootReducer;
+
+/*
+case GET_TYPES:
+      return {
+        ...state,
+        types: action.payload,
+      };
+*/
 
 /* const rootReducer = (state = initialState, action) => {
   switch (action.type) {

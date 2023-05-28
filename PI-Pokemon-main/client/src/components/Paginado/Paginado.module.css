@@ -1,0 +1,30 @@
+.container {
+  display: inline;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ul {
+  list-style-type: none;
+  text-align: center;
+}
+
+.li {
+  float: left;
+  width: 2em;
+  margin: 10px;
+}
+.button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 2px;
+  background: linear-gradient(#ff8d01, #8a4c00);
+  color: #fff;
+  transition: 0.3s;
+}
+.button:hover {
+  background: #8a4c00;
+  color: #ffffff;
+  cursor: pointer;
+}
