@@ -9,6 +9,7 @@ function Search() {
   const [name, setName] = useState("");
 
   const handleOnchange = (event) => {
+    event.preventDefault();
     setName(event.target.value);
   };
 

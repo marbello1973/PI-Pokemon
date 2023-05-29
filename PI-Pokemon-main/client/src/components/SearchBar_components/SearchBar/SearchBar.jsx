@@ -14,10 +14,8 @@ function SearchBar() {
       <div>
         <Search />
       </div>
-      <div>
-        <Filtertype />
-        <Filterorigin />
-      </div>
+      <Filtertype />
+      <Filterorigin />
       <OrderAceDec />
       <OrderAlfabetico />
       <Orderattack />

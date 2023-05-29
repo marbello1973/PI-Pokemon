@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./CardDetail.module.css";
+import { Link } from "react-router-dom";
 
-function CardDetail({ name, types, image, attack }) {
+function CardDetail({ name, types, image, attack, id }) {
   return (
     <div>
       <div className={styles.container} key="id">
@@ -10,7 +11,10 @@ function CardDetail({ name, types, image, attack }) {
             <img className={styles.imagen} src={image} alt="img" />
           </div>
           <div className={styles.name}>
-            <p>Name: {name}</p>
+            <Link to={`/home/${id}`}>
+              <p>Name: {name}</p>
+            </Link>
+            <p>Id: {id}</p>
           </div>
           <div className={styles.attack}>
             <p>Attack: {attack}</p>

@@ -12,6 +12,7 @@ function Filterorigin() {
   }, [dispatch]);
 
   const handlerFilterApiBdd = (event) => {
+    event.preventDefault();
     dispatch(filterApiBdd(event.target.value));
   };
 

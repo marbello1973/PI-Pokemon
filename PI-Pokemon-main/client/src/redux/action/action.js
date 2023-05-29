@@ -4,6 +4,10 @@ import {
   SEARCH_BY_NAME,
   FILTER_POKEMONS_TYPES,
   FILTER_API_BDD,
+  ORDER_BY_ACC_DCC,
+  ORDER_ATTACK,
+  ORDER_BY_NAME,
+  GET_POKEMONS_BY_ID,
 } from "./action-types";
 
 export const getPokemons = () => {
@@ -39,6 +43,22 @@ export function searchByName(name) {
   };
 }
 
+export function pokemonById(id) {
+  return async function (dispatch) {
+    try {
+      const res = await axios.get(`http://localhost:3001/pokemon/${id}`);
+      const pokemonId = res.data;
+      console.log(pokemonId);
+      dispatch({
+        type: GET_POKEMONS_BY_ID,
+        payload: pokemonId,
+      });
+    } catch (error) {
+      console.log({ msg: error.message });
+    }
+  };
+}
+
 export function filterType(payload) {
   // console.log(payload);
   return {
@@ -50,6 +70,28 @@ export function filterType(payload) {
 export function filterApiBdd(payload) {
   return {
     type: FILTER_API_BDD,
+    payload,
+  };
+}
+
+export function orderAccDcc(payload) {
+  return {
+    type: ORDER_BY_ACC_DCC,
+    payload,
+  };
+}
+
+export function orderByName(payload) {
+  return {
+    type: ORDER_BY_NAME,
+    payload,
+  };
+}
+
+export function orderAttack(payload) {
+  console.log(payload);
+  return {
+    type: ORDER_ATTACK,
     payload,
   };
 }

@@ -1,17 +1,25 @@
 import React from "react";
+import { orderAttack } from "../../../redux/action/action";
+import { useDispatch /* , useSelector */ } from "react-redux";
 
 function Orderattack() {
+  const dispatch = useDispatch();
+  // const pokemon = useSelector((state) => state.pokemons);
+
+  const handleOrderAttack = (event) => {
+    dispatch(orderAttack(event.target.value));
+    console.log(event.target.value);
+  };
   return (
     <div>
-      Orderattack
       <div>
         <div>
           <label title="filter-type">Ordenamiento por ataque</label>
         </div>
-        <select>
-          <option value="">Oreden ataque</option>
-          <option value="api">Attack maximo</option>
-          <option value="bdd">Attack minimo</option>
+        <select onChange={handleOrderAttack}>
+          <option value="All">Oreden ataque</option>
+          <option value="max">Attack maximo</option>
+          <option value="min">Attack minimo</option>
         </select>
       </div>
     </div>

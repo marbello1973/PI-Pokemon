@@ -5,6 +5,7 @@ import { filterType } from "../../../redux/action/action";
 function Filtertype() {
   const dispatch = useDispatch();
   const pokemon = useSelector((state) => state.pokemons);
+
   useEffect(() => {
     dispatch(filterType(pokemon));
     // eslint-disable-next-line react-hooks/exhaustive-deps

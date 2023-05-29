@@ -1,23 +1,35 @@
 import {
   GET_POKEMONS,
-  SEARCH_BY_NAME,
   FILTER_POKEMONS_TYPES,
+  SEARCH_BY_NAME,
   FILTER_API_BDD,
+  ORDER_BY_ACC_DCC,
+  ORDER_ATTACK,
+  ORDER_BY_NAME,
+  GET_POKEMONS_BY_ID,
 } from "../action/action-types";
 
 const initialState = {
   pokemons: [],
   allPokemons: [],
+  pokemonID: [],
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_POKEMONS:
-      // console.log(action.payload);
+      // console.log(actiosn.payload);
       return {
         ...state,
         pokemons: action.payload,
         allPokemons: action.payload,
+      };
+
+    case GET_POKEMONS_BY_ID:
+      // console.log(action.paylaod);
+      return {
+        ...state,
+        pokemonID: action.payload,
       };
 
     case FILTER_POKEMONS_TYPES:
@@ -48,6 +60,76 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemons: action.payload === "All" ? state.allPokemons : filterApiBdd,
+      };
+
+    case ORDER_BY_ACC_DCC:
+      const pokeNameOrder = state.allPokemons;
+      const orderName =
+        action.payload === "Acc"
+          ? pokeNameOrder.sort((a, b) => {
+              if (a.id > b.id) {
+                return 1;
+              }
+              if (b.id > a.id) {
+                return -1;
+              }
+              return 0;
+            })
+          : pokeNameOrder.sort((a, b) => {
+              if (a.id > b.id) {
+                return -1;
+              }
+              if (b.id > a.id) {
+                return 1;
+              }
+              return 0;
+            });
+
+      return {
+        ...state,
+        pokemons: action.paylaod === "All" ? state.allPokemons : orderName,
+      };
+
+    case ORDER_BY_NAME:
+      const pokeByName = state.allPokemons;
+      const orderByName =
+        action.payload === "AZ"
+          ? pokeByName.sort((a, b) => {
+              if (a.name > b.name) {
+                return 1;
+              }
+              if (b.name > a.name) {
+                return -1;
+              }
+              return 0;
+            })
+          : pokeByName.sort((a, b) => {
+              if (a.name > b.name) {
+                return -1;
+              }
+              if (b.name > a.name) {
+                return 1;
+              }
+              return 0;
+            });
+      return {
+        ...state,
+        pokemons: action.paylaod === "ALl" ? state.allPokemons : orderByName,
+      };
+
+    case ORDER_ATTACK:
+      const orderAttack =
+        action.payload === "min"
+          ? (state.pokemons = state.pokemons.sort(
+              (a, b) => a.attack - b.attack
+            ))
+          : (state.pokemons = state.pokemons.sort(
+              (a, b) => b.attack - a.attack
+            ));
+
+      return {
+        ...state,
+        pokemons: action.payload === "All" ? state.allPokemons : orderAttack,
       };
 
     default:

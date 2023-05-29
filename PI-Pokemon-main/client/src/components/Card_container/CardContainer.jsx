@@ -4,6 +4,7 @@ import CardDetail from "../Card_detail/CardDetail";
 import { getPokemons } from "../../redux/action/action";
 import Paginado from "../Paginado/Paginado";
 import style from "./CardContainer.module.css";
+// import { Card } from "../../views";
 
 function CardContainer() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function CardContainer() {
           paginado={paginado}
         />
       </div>
+
       <div className={style.cardContainer}>
         {currentPoke?.map((el) => {
           return (
@@ -50,6 +52,23 @@ function CardContainer() {
             />
           );
         })}
+        {/* {currentPoke?.map((el) => {
+          return (
+            <Card
+              key={el.id}
+              id={el.id}
+              name={el.name}
+              image={el.image}
+              attack={el.attack}
+              defense={el.defense}
+              speed={el.speed}
+              height={el.height}
+              weight={el.weight}
+              types={el.types.map((el) => el.name)}
+              createdDB={el.createdDB}
+            />
+          );
+        })} */}
       </div>
     </div>
   );
