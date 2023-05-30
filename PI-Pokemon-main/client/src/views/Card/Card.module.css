@@ -1,7 +1,72 @@
+:root {
+  --title-color: rgb(182, 112, 0);
+  --title-color-detail: rgb(131, 81, 0);
+  --fondo-card: #7e3014;
+  --fuente-card-title: #ffff;
+  --title-color2: #777777;
+  --color: #973f1e;
+}
+
 .cardDetail {
-  background: rgb(230, 230, 230);
-  color: rgb(75, 75, 75);
+  /* background: rgb(230, 230, 230); */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 5em;
+}
+
+.title {
+  color: var(--title-color2);
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.containerCard {
+  max-width: 800px;
+  background-color: rgb(245, 245, 222);
+  border: 1px solid rgba(249, 67, 0, 0.75);
+  border-radius: 5px;
+}
+
+.containerImage {
+  width: 100%;
+  height: auto;
+}
+
+.image {
+  width: 400px;
+  height: 400px;
+  transition: 2s;
+}
+
+.containerTitle {
+  display: flex;
+  flex-direction: column;
+  /* background: linear-gradient(#f9e5a9, #ffbf00); */
+  background: var(--fondo-card);
+  color: var(--fuente-card-title);
+  font-size: 18px;
+}
+
+.containerTitle > p {
+  margin: 2px;
+  font-size: 20px;
+  transition: 0.5s;
+}
+.containerTitle > p:hover {
+  cursor: pointer;
+  background: var(--color);
+}
+
+/* .nameP:hover {
+  cursor: pointer;
+} */
+
+@media only screen and (max-width: 500px) {
+  .image {
+    width: 200px;
+    height: 200px;
+    transition: 2s;
+  }
 }

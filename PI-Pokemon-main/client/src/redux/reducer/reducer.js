@@ -26,7 +26,6 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case GET_POKEMONS_BY_ID:
-      // console.log(action.paylaod);
       return {
         ...state,
         pokemonID: action.payload,
