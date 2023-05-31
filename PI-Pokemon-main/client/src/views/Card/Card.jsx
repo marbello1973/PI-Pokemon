@@ -22,23 +22,31 @@ function Card() {
     <div className={styles.cardDetail}>
       {pokemonid.map((el) => {
         return (
-          <div key={id}>
+          <div key={id} className={styles.containerCard}>
             <div>
-              <p>Detalles Pokemon</p>
+              <p className={styles.title}>Details Pokemon</p>
             </div>
             <div>
-              <img src={el.image ? el.image : imagen} alt="" />
+              <img
+                className={styles.image}
+                src={el.image ? el.image : imagen}
+                alt=""
+              />
             </div>
-            <div>
+            <div className={styles.containerTitle}>
               <p>Id: {el.id}</p>
-              <p>Nombre: {el.name}</p>
-              <p>Ataque: {el.attack}</p>
-              <p>Defensa: {el.defense}</p>
-              <p>Velocidad: {el.speed}</p>
-              <p>Altura: {el.height}</p>
-              <p>Peso: {el.weight}</p>
+              <p>Name: {el.name}</p>
+              <p>Life:{el.hp}</p>
+              <p>Attack: {el.attack}</p>
+              <p>Defense: {el.defense}</p>
+              <p>Speed: {el.speed}</p>
+              <p>Height: {el.height}</p>
+              <p>Weight: {el.weight}</p>
               <p>
-                Typo: {!el.createdDB ? el.types : el.types.map((el) => el.name)}
+                Type:{" "}
+                {!el.createdDB
+                  ? `${el.types.join(" - ")}`
+                  : `${el.types.map((el) => el.name)}`}
               </p>
             </div>
           </div>

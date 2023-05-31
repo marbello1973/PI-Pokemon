@@ -17,7 +17,7 @@ function Orderattack() {
           <label title="filter-type">Ordenamiento por ataque</label>
         </div>
         <select onChange={handleOrderAttack}>
-          <option value="All">Oreden ataque</option>
+          <option value="All">All</option>
           <option value="max">Attack maximo</option>
           <option value="min">Attack minimo</option>
         </select>

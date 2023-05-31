@@ -27,14 +27,18 @@ function Search() {
 
   return (
     <div className={style.container}>
-      <form onChange={(e) => handleOnchange(e)}>
-        <label>input para buscar</label>
+      <div>
+        <label htmlFor="buscar">input para buscar</label>
         <input
           value={name}
           onInput={onInput}
+          onChange={(e) => handleOnchange(e)}
           type="search"
-          placeholder={"Go..."}
+          placeholder={"Buscar pokemon..."}
+          id="buscar"
         />
+      </div>
+      <div>
         {allPokemon.length > 1 ? (
           <button type="submit" onClick={(e) => handleSubmit(e)}>
             Buscar
@@ -44,7 +48,7 @@ function Search() {
             Regresar
           </button>
         )}
-      </form>
+      </div>
     </div>
   );
 }

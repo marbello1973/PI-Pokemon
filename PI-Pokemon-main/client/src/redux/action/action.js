@@ -8,6 +8,7 @@ import {
   ORDER_ATTACK,
   ORDER_BY_NAME,
   GET_POKEMONS_BY_ID,
+  GET_TYPES,
 } from "./action-types";
 
 export const getPokemons = () => {
@@ -58,6 +59,25 @@ export function pokemonById(id) {
   };
 }
 
+export function postPokemon(payload) {
+  return async function (dispatch) {
+    const res = await axios.post("http://localhost:3001/pokemon", payload);
+    return res;
+  };
+}
+
+export function getTypes() {
+  return async function (dispatch) {
+    try {
+      const res = await axios.get("http://localhost:3001/type");
+      const typePokemon = res.data;
+      dispatch({ type: GET_TYPES, payload: typePokemon });
+    } catch (error) {
+      console.log({ msg: error.message });
+    }
+  };
+}
+
 export function filterType(payload) {
   // console.log(payload);
   return {
@@ -88,7 +108,7 @@ export function orderByName(payload) {
 }
 
 export function orderAttack(payload) {
-  console.log(payload);
+  // console.log(payload);
   return {
     type: ORDER_ATTACK,
     payload,

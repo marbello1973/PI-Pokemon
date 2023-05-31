@@ -7,12 +7,15 @@ import {
   ORDER_ATTACK,
   ORDER_BY_NAME,
   GET_POKEMONS_BY_ID,
+  GET_TYPES,
+  POST_POKEMONS,
 } from "../action/action-types";
 
 const initialState = {
   pokemons: [],
   allPokemons: [],
   pokemonID: [],
+  pokemonType: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -29,6 +32,17 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemonID: action.payload,
+      };
+
+    case POST_POKEMONS:
+      return {
+        ...state,
+      };
+
+    case GET_TYPES:
+      return {
+        ...state,
+        pokemonType: action.payload,
       };
 
     case FILTER_POKEMONS_TYPES:

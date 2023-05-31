@@ -6,3 +6,5 @@ export const ORDER_BY_ACC_DCC = "ORDER_BY_ACC_DCC";
 export const ORDER_ATTACK = "ORDER_ATTACK";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const GET_POKEMONS_BY_ID = "GET_POKEMONS_BY_ID";
+export const GET_TYPES = "GET_TYPES";
+export const POST_POKEMONS = "POST_POKEMONS";
