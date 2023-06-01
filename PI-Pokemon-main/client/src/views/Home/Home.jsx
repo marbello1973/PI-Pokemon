@@ -1,9 +1,7 @@
 import React from "react";
-import styles from "./Home.module.css";
-// import Card from "../Card/Card";
 import SearchBar from "../../components/SearchBar_components/SearchBar/SearchBar";
 import CardContainer from "../../components/Card_container/CardContainer";
-
+import styles from "./Home.module.css";
 function Home() {
   return (
     <div className={styles.container}>
@@ -12,6 +10,7 @@ function Home() {
         <div>
           <SearchBar />
         </div>
+        <div></div>
         <div>
           <CardContainer />
         </div>

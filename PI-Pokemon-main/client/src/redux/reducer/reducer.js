@@ -53,6 +53,7 @@ const rootReducer = (state = initialState, action) => {
           : allPokemons.filter((el) =>
               el.types.find((el) => el.name === action.payload)
             );
+      // console.log(typeFilter);
       return {
         ...state,
         pokemons: typeFilter,
@@ -76,35 +77,41 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case ORDER_BY_ACC_DCC:
-      const pokeNameOrder = state.allPokemons;
+      const pokeNameOrder = state.pokemons;
+      const mapped =
+        pokeNameOrder &&
+        pokeNameOrder.map((el, i) => {
+          return { index: i, value: el };
+        });
       const orderName =
         action.payload === "Acc"
-          ? pokeNameOrder.sort((a, b) => {
-              if (a.id > b.id) {
+          ? mapped.sort((a, b) => {
+              if (a.index > b.index) {
                 return 1;
               }
-              if (b.id > a.id) {
+              if (a.index < b.index) {
                 return -1;
               }
               return 0;
             })
-          : pokeNameOrder.sort((a, b) => {
-              if (a.id > b.id) {
+          : mapped.sort((a, b) => {
+              if (a.index > b.index) {
                 return -1;
               }
-              if (b.id > a.id) {
+              if (a.index < b.index) {
                 return 1;
               }
               return 0;
             });
-
+      console.log(orderName);
       return {
         ...state,
-        pokemons: action.paylaod === "All" ? state.allPokemons : orderName,
+        pokemons:
+          orderName /* action.paylaod !== "All" ? orderName : state.pokemons */,
       };
 
     case ORDER_BY_NAME:
-      const pokeByName = state.allPokemons;
+      const pokeByName = state.pokemons;
       const orderByName =
         action.payload === "AZ"
           ? pokeByName.sort((a, b) => {
@@ -125,9 +132,11 @@ const rootReducer = (state = initialState, action) => {
               }
               return 0;
             });
+      // console.log(orderByName);
       return {
         ...state,
-        pokemons: action.paylaod === "ALl" ? state.allPokemons : orderByName,
+        pokemons:
+          orderByName /* action.paylaod === "ALl" ? state.pokemons : orderByName, */,
       };
 
     case ORDER_ATTACK:
@@ -139,10 +148,11 @@ const rootReducer = (state = initialState, action) => {
           : (state.pokemons = state.pokemons.sort(
               (a, b) => b.attack - a.attack
             ));
-
+      console.log(orderAttack);
       return {
         ...state,
-        pokemons: action.payload === "All" ? state.allPokemons : orderAttack,
+        pokemons:
+          orderAttack /* action.payload === "All" ? state.allPokemons : orderAttack, */,
       };
 
     default:
@@ -311,3 +321,8 @@ export default rootReducer;
     },
   ],
   */
+
+/*
+  
+  
+   */

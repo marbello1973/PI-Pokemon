@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React /* , { useEffect } */ from "react";
+import { /* useSelector, */ useDispatch } from "react-redux";
 import { filterType } from "../../../redux/action/action";
 
 function Filtertype() {
   const dispatch = useDispatch();
-  const pokemon = useSelector((state) => state.pokemons);
+  // const pokemon = useSelector((state) => state.pokemons);
 
-  useEffect(() => {
-    dispatch(filterType(pokemon));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   dispatch(filterType(pokemon));
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const handleFilter = (event) => {
     dispatch(filterType(event.target.value));

@@ -17,7 +17,7 @@ export const getPokemons = () => {
       const response = await axios.get("http://localhost:3001/pokemon");
       const pokemons = response.data;
       // console.log(pokemons);
-      return dispatch({
+      dispatch({
         type: GET_POKEMONS,
         payload: pokemons,
       });
@@ -78,22 +78,8 @@ export function getTypes() {
   };
 }
 
-export function filterType(payload) {
-  // console.log(payload);
-  return {
-    type: FILTER_POKEMONS_TYPES,
-    payload,
-  };
-}
-
-export function filterApiBdd(payload) {
-  return {
-    type: FILTER_API_BDD,
-    payload,
-  };
-}
-
 export function orderAccDcc(payload) {
+  console.log(payload);
   return {
     type: ORDER_BY_ACC_DCC,
     payload,
@@ -111,6 +97,19 @@ export function orderAttack(payload) {
   // console.log(payload);
   return {
     type: ORDER_ATTACK,
+    payload,
+  };
+}
+export function filterType(payload) {
+  // console.log(payload);
+  return {
+    type: FILTER_POKEMONS_TYPES,
+    payload,
+  };
+}
+export function filterApiBdd(payload) {
+  return {
+    type: FILTER_API_BDD,
     payload,
   };
 }

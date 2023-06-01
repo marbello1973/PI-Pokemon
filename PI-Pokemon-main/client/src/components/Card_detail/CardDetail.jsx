@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./CardDetail.module.css";
 import { Link } from "react-router-dom";
+import styles from "./CardDetail.module.css";
 
 function CardDetail({ name, types, image, attack, id }) {
   return (
@@ -20,7 +20,7 @@ function CardDetail({ name, types, image, attack, id }) {
             <p>Attack: {attack}</p>
           </div>
           <div className={styles.type}>
-            <p>Type: {types.toString().split(" ")}</p>
+            <p>Type: {types}</p>
           </div>
         </div>
       </div>

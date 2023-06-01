@@ -10,15 +10,19 @@ import Orderattack from "../Order_attack/Orderattack";
 function SearchBar() {
   return (
     <div className={style.container}>
-      <p>SearchBar barra de busqueda</p>
+      <p>SearchBar barra de busqueda y ordenamiento</p>
       <div>
         <Search />
       </div>
-      <Filtertype />
-      <Filterorigin />
-      <OrderAceDec />
-      <OrderAlfabetico />
-      <Orderattack />
+      <div>
+        <OrderAceDec />
+        <OrderAlfabetico />
+        <Orderattack />
+      </div>
+      <div>
+        <Filtertype />
+        <Filterorigin />
+      </div>
     </div>
   );
 }
