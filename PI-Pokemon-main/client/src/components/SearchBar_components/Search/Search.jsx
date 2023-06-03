@@ -11,6 +11,7 @@ function Search() {
   const handleOnchange = (event) => {
     event.preventDefault();
     setName(event.target.value);
+    // console.log(event.target.value);
   };
 
   const handleSubmit = (event) => {

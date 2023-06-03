@@ -78,8 +78,28 @@ export function getTypes() {
   };
 }
 
-export function orderAccDcc(payload) {
+/***************************************************************/
+//filtros por typo y base de datos funcionando
+export function filterType(payload) {
+  // console.log(payload);
+  return {
+    type: FILTER_POKEMONS_TYPES,
+    payload,
+  };
+}
+export function filterApiBdd(payload) {
   console.log(payload);
+  return {
+    type: FILTER_API_BDD,
+    payload,
+  };
+}
+/***************************************************************/
+
+/***************************************************************/
+//Ordenamiento accendente, por nombre y por ataque
+export function orderAccDcc(payload) {
+  // console.log(payload);
   return {
     type: ORDER_BY_ACC_DCC,
     payload,
@@ -97,19 +117,6 @@ export function orderAttack(payload) {
   // console.log(payload);
   return {
     type: ORDER_ATTACK,
-    payload,
-  };
-}
-export function filterType(payload) {
-  // console.log(payload);
-  return {
-    type: FILTER_POKEMONS_TYPES,
-    payload,
-  };
-}
-export function filterApiBdd(payload) {
-  return {
-    type: FILTER_API_BDD,
     payload,
   };
 }

@@ -8,15 +8,19 @@ import styles from "./Card.module.css";
 function Card() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const pokemonid = useSelector((state) => state.pokemonID);
 
-  console.log(pokemonid);
+  // console.log(pokemonid);
 
   useEffect(() => {
     dispatch(pokemonById(id));
     // eslint-disable-next-line
   }, []);
+
+  if (!pokemonid) {
+    return "Loading...";
+  }
 
   return (
     <div className={styles.cardDetail}>

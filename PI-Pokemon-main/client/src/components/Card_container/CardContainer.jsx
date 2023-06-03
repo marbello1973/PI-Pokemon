@@ -21,6 +21,7 @@ function CardContainer() {
 
   useEffect(() => {
     dispatch(getPokemons(pokemon));
+    setCurrent(1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 

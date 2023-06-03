@@ -1,8 +1,8 @@
-import React, { /* useEffect, */ useState } from "react";
-import { /*  useSelector, */ useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { /* useSelector, */ useDispatch } from "react-redux";
 import { orderAccDcc } from "../../../redux/action/action";
 
-function OrderAceDec() {
+function OrderAceDec(props) {
   // const pokemon = useSelector((state) => state.pokemons);
   const dispatch = useDispatch();
 
@@ -18,10 +18,11 @@ function OrderAceDec() {
     setOrder(`${event.target.value}`);
   };
 
-  /*  useEffect(() => {
+  /* useEffect(() => {
     dispatch(orderAccDcc(pokemon));
+
     // eslint-disable-next-line
-  }, [dispatch]); */
+  }, [dispatch, pokemon]); */
 
   return (
     <div>

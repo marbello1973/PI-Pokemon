@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { postPokemon, getTypes } from "../../redux/action/action";
 import validate from "../../utils/index";
+// import image from "../../assest/pikachu.png";
 import styles from "./Form.module.css";
 
 function Form() {
@@ -82,128 +83,156 @@ function Form() {
 
   return (
     <div className={styles.container}>
-      <h1>Form</h1>
-      <div onSubmit={(e) => handleSubmit(e)} className={styles.containerForm}>
-        <form className={styles.form}>
+      <h1 className={styles.h1}>Registra tu pokemon</h1>
+      {/* <img className={styles.imagen} src={image} alt="img" /> */}
+      <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
+        <div className={styles.containerLableInput}>
           <div>
-            <label htmlFor="imagen">Imagen</label>
-            <input type="text" placeholder="Image" id="imagen" />
+            <label className={styles.label} htmlFor="imagen">
+              Imagen
+              <input type="text" placeholder="Image" id="imagen" />
+            </label>
           </div>
           <div>
-            <label htmlFor="name">Name</label>
-            <input
-              value={input.name}
-              name="name"
-              type="text"
-              placeholder="Name"
-              id="name"
-              onChange={handleChange}
-            />
+            <label className={styles.label} htmlFor="name">
+              Name
+              <input
+                value={input.name}
+                name="name"
+                type="text"
+                placeholder="Name"
+                id="name"
+                onChange={handleChange}
+              />
+            </label>
             {errors.name && <p className={styles.errors}>{errors.name}</p>}
           </div>
           <div>
-            <label htmlFor="hp">Hp</label>
-            <input
-              value={input.hp}
-              name="hp"
-              type="text"
-              placeholder="Life"
-              id="hp"
-              onChange={handleChange}
-            />
-            <span>{errors.hp}</span>
+            <label className={styles.label} htmlFor="hp">
+              Life
+              <input
+                value={input.hp}
+                name="hp"
+                type="text"
+                placeholder="Life"
+                id="hp"
+                onChange={handleChange}
+              />
+            </label>
+            {errors.hp && <p className={styles.errors}>{errors.hp}</p>}
           </div>
           <div>
-            <label htmlFor="Attack">Attack</label>
-            <input
-              value={input.attack}
-              name="attack"
-              type="text"
-              placeholder="Attack"
-              id="Attack"
-              onChange={handleChange}
-            />
-            <span>{errors.attack}</span>
+            <label className={styles.label} htmlFor="Attack">
+              Attack
+              <input
+                value={input.attack}
+                name="attack"
+                type="text"
+                placeholder="Attack"
+                id="Attack"
+                onChange={handleChange}
+              />{" "}
+            </label>
+            {errors.attack && <p className={styles.errors}>{errors.attack}</p>}
           </div>
           <div>
-            <label htmlFor="Defense">Defense</label>
-            <input
-              value={input.defense}
-              name="defense"
-              type="text"
-              placeholder="Defense"
-              id="Defense"
-              onChange={handleChange}
-            />
+            <label className={styles.label} htmlFor="Defense">
+              Defense
+              <input
+                value={input.defense}
+                name="defense"
+                type="text"
+                placeholder="Defense"
+                id="Defense"
+                onChange={handleChange}
+              />{" "}
+            </label>
             {errors.defense && (
               <p className={styles.errors}>{errors.defense}</p>
             )}
           </div>
           <div>
-            <label htmlFor="Speed">Speed</label>
-            <input
-              value={input.speed}
-              name="speed"
-              type="text"
-              placeholder="Speed"
-              id="Speed"
-              onChange={handleChange}
-            />
+            <label className={styles.label} htmlFor="Speed">
+              Speed
+              <input
+                value={input.speed}
+                name="speed"
+                type="text"
+                placeholder="Speed"
+                id="Speed"
+                onChange={handleChange}
+              />{" "}
+            </label>
             {errors.speed && <p className={styles.errors}>{errors.speed}</p>}
           </div>
           <div>
-            <label htmlFor="Height">Height</label>
-            <input
-              value={input.height}
-              name="height"
-              type="text"
-              placeholder="Height"
-              id="Height"
-              onChange={handleChange}
-            />
+            <label className={styles.label} htmlFor="Height">
+              Height
+              <input
+                value={input.height}
+                name="height"
+                type="text"
+                placeholder="Height"
+                id="Height"
+                onChange={handleChange}
+              />{" "}
+            </label>
             {errors.height && <p className={styles.errors}>{errors.height}</p>}
           </div>
           <div>
-            <label htmlFor="Weight">Weight</label>
-            <input
-              value={input.weight}
-              name="weight"
-              type="text"
-              placeholder="Weight"
-              id="Weight"
-              onChange={handleChange}
-            />
+            <label className={styles.label} htmlFor="Weight">
+              Weight
+              <input
+                value={input.weight}
+                name="weight"
+                type="text"
+                placeholder="Weight"
+                id="Weight"
+                onChange={handleChange}
+              />{" "}
+            </label>
             {errors.weight && <p className={styles.errors}>{errors.weight}</p>}
           </div>
-          <div>
-            <label htmlFor="types">Type</label>
-            <select onChange={(event) => handleSelect(event)}>
-              {pokemontype &&
-                pokemontype.map((el) => (
-                  <option key={el.name} value={el.name}>
-                    {el.name}
-                  </option>
+          <div className={styles.containerType}>
+            <div>
+              <label className={styles.label} htmlFor="types">
+                Type{" "}
+                <select
+                  className={styles.select}
+                  onChange={(event) => handleSelect(event)}
+                >
+                  {pokemontype &&
+                    pokemontype.map((el) => (
+                      <option key={el.name} value={el.name}>
+                        {el.name}
+                      </option>
+                    ))}
+                </select>{" "}
+              </label>
+            </div>
+            <div className={styles.containerTypes}>
+              <span className={styles.spanTypes}>
+                {input.types.map((el) => (
+                  <div className={styles.containerP} key={el}>
+                    <p className={styles.elP}>{el}</p>
+                    <button
+                      className={styles.buttonType}
+                      onClick={() => handleDelette(el)}
+                    >
+                      X
+                    </button>
+                  </div>
                 ))}
-            </select>
+              </span>
+            </div>
           </div>
           <div>
-            <button type="submit">Enviar</button>
+            <button className={styles.buton} type="submit">
+              Enviar
+            </button>
           </div>
-        </form>
-        <div>
-          <span>
-            {input.types.map((el) => (
-              <div key={el}>
-                <p>{el}</p>
-                <button onClick={() => handleDelette(el)}>X</button>
-              </div>
-            ))}
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

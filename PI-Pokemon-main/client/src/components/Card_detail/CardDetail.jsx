@@ -5,7 +5,7 @@ import styles from "./CardDetail.module.css";
 function CardDetail({ name, types, image, attack, id }) {
   return (
     <div>
-      <div className={styles.container} key="id">
+      <div className={styles.container} key={id}>
         <div className={styles.title}>
           <div className={styles.containerImage}>
             <img className={styles.imagen} src={image} alt="img" />
@@ -20,7 +20,7 @@ function CardDetail({ name, types, image, attack, id }) {
             <p>Attack: {attack}</p>
           </div>
           <div className={styles.type}>
-            <p>Type: {types}</p>
+            <p>Type: {types.slice("").join("-")}</p>
           </div>
         </div>
       </div>
