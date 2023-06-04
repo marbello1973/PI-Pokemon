@@ -203,7 +203,11 @@ function Form() {
                 >
                   {pokemontype &&
                     pokemontype.map((el) => (
-                      <option key={el.name} value={el.name}>
+                      <option
+                        className={styles.options}
+                        key={el.name}
+                        value={el.name}
+                      >
                         {el.name}
                       </option>
                     ))}
