@@ -11,13 +11,12 @@ function CardDetail({ name, types, image, attack, id }) {
             <img className={styles.imagen} src={image} alt="img" />
           </div>
           <div className={styles.name}>
-            <Link to={`/home/${id}`}>
-              <p>Name: {name}</p>
+            <Link className={styles.link} to={`/home/${id}`}>
+              <p>{name}</p>
             </Link>
-            <p>Id: {id}</p>
           </div>
           <div className={styles.attack}>
-            <p>Attack: {attack}</p>
+            <p className={styles.attackP}>Attack: {attack}</p>
           </div>
           <div className={styles.type}>
             <p>Type: {types.slice("").join("-")}</p>

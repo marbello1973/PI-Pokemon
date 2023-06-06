@@ -1,26 +1,30 @@
-import React /* , { useEffect } */ from "react";
-import { /* useSelector, */ useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { filterType } from "../../../redux/action/action";
+import style from "./Filtertype.module.css";
 
 function Filtertype() {
   const dispatch = useDispatch();
-  // const pokemon = useSelector((state) => state.pokemons);
-
-  // useEffect(() => {
-  //   dispatch(filterType(pokemon));
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  const pokemon = useSelector((state) => state.pokemons);
 
   const handleFilter = (event) => {
+    event.preventDefault();
     dispatch(filterType(event.target.value));
   };
+  useEffect(() => {
+    dispatch(filterType(pokemon));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div>
       <div>
-        <label>Filtrar por typo</label>
+        <label className={style.label}>Filtrar por typo</label>
       </div>
       <div>
-        <select onChange={(event) => handleFilter(event)}>
+        <select
+          className={style.select}
+          onChange={(event) => handleFilter(event)}
+        >
           <option value="All">All</option>
           <option value="fighting">fighting</option>
           <option value="flying">flying</option>

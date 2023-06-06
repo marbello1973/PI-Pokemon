@@ -1,6 +1,7 @@
 import React from "react";
 import { orderByName } from "../../../redux/action/action";
 import { useDispatch } from "react-redux";
+import style from "./OrderAlfabetico.module.css";
 
 function OrderAlfabetico() {
   const dispatch = useDispatch();
@@ -12,9 +13,11 @@ function OrderAlfabetico() {
     <div>
       <div>
         <div>
-          <label title="filter-type">Ordenamiento alfabetico</label>
+          <label className={style.label} title="filter-type">
+            Ordenamiento alfabetico
+          </label>
         </div>
-        <select onChange={handlerOrderName}>
+        <select className={style.select} onChange={handlerOrderName}>
           <option value="All">All</option>
           <option value="AZ">A-Z</option>
           <option value="ZA">Z-A</option>

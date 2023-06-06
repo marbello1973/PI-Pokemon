@@ -3,8 +3,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid grey;
+  border: 1px solid var(--color-primary);
   gap: 2em;
   margin: 4em;
   padding: 4em;
+  border-radius: 1em;
+}
+
+.container p {
+  color: var(--color-subt);
+  font-size: 1.1em;
 }

@@ -16,13 +16,12 @@ function SearchBar() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(orderAccDcc(pokemon));
-
     // eslint-disable-next-line
-  }, [dispatch, pokemon]);
+  }, []);
 
   return (
     <div className={style.container}>
-      <p>SearchBar barra de busqueda y ordenamiento</p>
+      <p>Barra De Busqueda y Ordenamiento</p>
       <Search />
       <OrderAceDec />
       <OrderAlfabetico />

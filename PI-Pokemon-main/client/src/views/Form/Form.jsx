@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { postPokemon, getTypes } from "../../redux/action/action";
+import { useHistory } from "react-router-dom";
 import validate from "../../utils/index";
 // import image from "../../assest/pikachu.png";
 import styles from "./Form.module.css";
 
 function Form() {
   const dispatch = useDispatch();
+  let history = useHistory();
   const pokemontype = useSelector((state) => state.pokemonType);
 
   const [input, setInput] = useState({
@@ -68,6 +70,7 @@ function Form() {
       weight: "",
       types: [],
     });
+    history.push("/home");
   };
 
   useEffect(() => {

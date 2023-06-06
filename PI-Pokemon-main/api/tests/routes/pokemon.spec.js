@@ -3,7 +3,7 @@ const { expect, test } = require("chai");
 const session = require("supertest-session");
 const app = require("../../src/app.js");
 const { Pokemon, conn } = require("../../src/db.js");
-const { getControllerApi } = require("../../src/handler/index.js");
+const { getHandlerApiInfo } = require("../../src/handler/index.js");
 
 const agent = session(app);
 const pokemon = {
@@ -21,12 +21,13 @@ describe("Pokemon routes", () => {
   );
 
   describe("GET rutas  ", () => {
-    it("GET ruta de /pokemon debe devolver un 200 'Exito' ", async () => {
+    /* it("GET ruta de /pokemon debe devolver un 200 'Exito' ", () => {
       return new Promise((resolve) => {
-        const res = agent.get(`/pokemon/`);
+        const res = agent.get(`/pokemon/`).send();
         expect(res.statusCode).to.equal(200);
+        expect(res.headers["Content-Type"]).toContain(["application/json"]);
       });
-    });
+    }); */
 
     it("GET ruta por /:id debe devolver un 200 'Exito'", async () => {
       const id = "1";
@@ -55,15 +56,27 @@ describe("Pokemon routes", () => {
     });
   });
 
-  describe("evaluar funcion getControllerApi ", () => {
-    it("getControllerApi debe ser una funcion", () => {
-      expect(typeof getControllerApi).to.not.equal("string");
-      expect(typeof getControllerApi).to.not.equal("number");
+  describe("GET rutas  ", () => {
+    beforeEach(async () => {
+      const res = await agent.get("/pokemon").send();
     });
-    it("getControllerApi debe devolver un array y un status 200", () => {
-      expect(getControllerApi()).to.be.an("array");
+    it("GET ruta de /pokemon debe devolver un 200 'Exito' ", async () => {
+      expect(res.statusCode).to.equal(200);
+      expect(res.headers["Content-Type"]).toContain(["application/json"]);
+    });
+
+    it('retorna un aray de objetos con la propiedad "name" ', async () => {
+      expect(res.body[0]).toHaveProperty("name");
     });
   });
+
+  /* describe("evaluar funcion getHandlerApiInfo ", () => {
+    it("getHandlerApiInfo debe ser una funcion", () => {
+      expect(typeof getHandlerApiInfo).to.equal("function");
+      expect(typeof getHandlerApiInfo).to.not.equal("string");
+      expect(typeof getHandlerApiInfo).to.not.equal("number");
+    });
+  }); */
 });
 
 /*

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { /* useSelector, */ useDispatch } from "react-redux";
+import React, { useState /* , useEffect */ } from "react";
+import { useDispatch /* , useSelector */ } from "react-redux";
 import { orderAccDcc } from "../../../redux/action/action";
+import style from "./OrderAceDec.module.css";
 
-function OrderAceDec(props) {
-  // const pokemon = useSelector((state) => state.pokemons);
+function OrderAceDec() {
+  // const pokemon = useSelector((state) => state.allPokemons);
   const dispatch = useDispatch();
 
   // console.log(pokemon);
@@ -18,18 +19,22 @@ function OrderAceDec(props) {
     setOrder(`${event.target.value}`);
   };
 
-  /* useEffect(() => {
-    dispatch(orderAccDcc(pokemon));
-
-    // eslint-disable-next-line
-  }, [dispatch, pokemon]); */
+  // useEffect(() => {
+  //   dispatch(orderAccDcc(pokemon));
+  //   // eslint-disable-next-line
+  // }, []);
 
   return (
     <div>
       <div>
-        <label title="filter-type">Ordenamiento Acc-Dcc</label>
+        <label className={style.label} title="filter-type">
+          Ordenamiento Acc-Dcc
+        </label>
       </div>
-      <select onChange={(event) => handleOrderName(event)}>
+      <select
+        className={style.select}
+        onChange={(event) => handleOrderName(event)}
+      >
         <option value="All">All</option>
         <option value="Acc">Ascendente</option>
         <option value="Dcc">Descendente</option>

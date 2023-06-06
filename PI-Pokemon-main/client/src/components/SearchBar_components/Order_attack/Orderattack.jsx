@@ -1,6 +1,7 @@
 import React from "react";
 import { orderAttack } from "../../../redux/action/action";
 import { useDispatch /* , useSelector */ } from "react-redux";
+import style from "./Orderattack.module.css";
 
 function Orderattack() {
   const dispatch = useDispatch();
@@ -14,9 +15,11 @@ function Orderattack() {
     <div>
       <div>
         <div>
-          <label title="filter-type">Ordenamiento por ataque</label>
+          <label className={style.label} title="filter-type">
+            Ordenamiento por ataque
+          </label>
         </div>
-        <select onChange={handleOrderAttack}>
+        <select className={style.select} onChange={handleOrderAttack}>
           <option value="All">All</option>
           <option value="max">Attack maximo</option>
           <option value="min">Attack minimo</option>

@@ -1,6 +1,7 @@
 import React /* , { useEffect } */ from "react";
 import { /*  useSelector, */ useDispatch } from "react-redux";
 import { filterApiBdd } from "../../../redux/action/action";
+import style from "./Filterorigin.module.css";
 
 function Filterorigin() {
   const dispatch = useDispatch();
@@ -19,10 +20,15 @@ function Filterorigin() {
   return (
     <div>
       <div>
-        <label title="filter-type">Filtrar por Api - Bdd</label>
+        <label className={style.label} title="filter-type">
+          Filtrar por Api - Bdd
+        </label>
       </div>
       <div>
-        <select onChange={(event) => handlerFilterApiBdd(event)}>
+        <select
+          className={style.select}
+          onChange={(event) => handlerFilterApiBdd(event)}
+        >
           <option value="All">All</option>
           <option value="Api">Api</option>
           <option value="Bdd">Bdd</option>

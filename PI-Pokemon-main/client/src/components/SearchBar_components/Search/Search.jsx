@@ -29,8 +29,9 @@ function Search() {
   return (
     <div className={style.container}>
       <div>
-        <label htmlFor="buscar">input para buscar</label>
+        <label htmlFor="buscar">Buscar pokemon por nombre</label>
         <input
+          className={style.input}
           value={name}
           onInput={onInput}
           onChange={(e) => handleOnchange(e)}
@@ -41,11 +42,19 @@ function Search() {
       </div>
       <div>
         {allPokemon.length > 1 ? (
-          <button type="submit" onClick={(e) => handleSubmit(e)}>
+          <button
+            className={style.buton}
+            type="submit"
+            onClick={(e) => handleSubmit(e)}
+          >
             Buscar
           </button>
         ) : (
-          <button type="submit" onClick={(e) => handleSubmit(e)}>
+          <button
+            className={style.buton}
+            type="submit"
+            onClick={(e) => handleSubmit(e)}
+          >
             Regresar
           </button>
         )}

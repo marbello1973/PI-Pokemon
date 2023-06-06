@@ -1,0 +1,17 @@
+.label {
+  color: var(--color-subt);
+}
+
+.select {
+  width: 100%;
+  border: 1px solid var(--color-primary);
+  border-radius: 0.5em;
+  padding: 0.5em;
+  font-size: 1em;
+  color: var(--color-subt);
+  margin-top: 4px;
+}
+
+.select:focus {
+  outline: none;
+}
