@@ -75,7 +75,8 @@ function Form() {
 
   useEffect(() => {
     dispatch(getTypes());
-  }, [dispatch]);
+    //eslint-disable-next-line
+  }, []);
 
   const handleDelette = (el) => {
     setInput({

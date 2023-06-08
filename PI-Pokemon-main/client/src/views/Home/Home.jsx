@@ -13,7 +13,8 @@ function Home() {
 
   useEffect(() => {
     dispatch(getPokemons());
-  });
+    //eslint-disable-next-line
+  }, []);
 
   return (
     <div className={styles.container}>

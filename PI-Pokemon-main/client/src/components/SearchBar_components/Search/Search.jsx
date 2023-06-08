@@ -9,7 +9,6 @@ function Search() {
   const [name, setName] = useState("");
 
   const handleOnchange = (event) => {
-    event.preventDefault();
     setName(event.target.value);
     // console.log(event.target.value);
   };
@@ -20,11 +19,12 @@ function Search() {
     setName("");
   };
 
-  const onInput = (e) => setName(e.target.value);
+  // const onInput = (e) => setName(e.target.value);
 
   useEffect(() => {
     dispatch(getPokemons);
-  }, [dispatch]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className={style.container}>
@@ -33,7 +33,7 @@ function Search() {
         <input
           className={style.input}
           value={name}
-          onInput={onInput}
+          /* onInput={onInput} */
           onChange={(e) => handleOnchange(e)}
           type="search"
           placeholder={"Buscar pokemon..."}

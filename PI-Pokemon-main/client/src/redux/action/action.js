@@ -88,7 +88,7 @@ export function filterType(payload) {
   };
 }
 export function filterApiBdd(payload) {
-  console.log(payload);
+  // console.log(payload);
   return {
     type: FILTER_API_BDD,
     payload,

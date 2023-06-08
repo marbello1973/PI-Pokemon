@@ -7,7 +7,7 @@ function OrderAlfabetico() {
   const dispatch = useDispatch();
   const handlerOrderName = (event) => {
     dispatch(orderByName(event.target.value));
-    console.log(event.target.value);
+    // console.log(event.target.value);
   };
   return (
     <div>

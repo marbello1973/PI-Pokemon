@@ -4,7 +4,7 @@ const { Pokemon, Type } = require("../db.js");
 const getApiInfo = async () => {
   const strPokemons = [];
   const pokemonApi = await axios.get(
-    `https://pokeapi.co/api/v2/pokemon?limit=2`
+    `https://pokeapi.co/api/v2/pokemon?limit=60`
   );
   const pokemonsUrl = await pokemonApi.data.results.map((el) => el.url);
   for (let i = 0; i < pokemonsUrl.length; i++) {
@@ -13,6 +13,8 @@ const getApiInfo = async () => {
       id: pokemon.data.id,
       name: pokemon.data.name,
       image: pokemon.data.sprites.other["official-artwork"].front_default,
+      // image: pokemon.data.sprites.back_default,
+      // image: pokemon.data.sprites.back_shiny,
       hp: pokemon.data.stats.find((el) => el.stat.name === "hp").base_stat,
       attack: pokemon.data.stats.find((el) => el.stat.name === "attack")
         .base_stat,

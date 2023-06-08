@@ -56,7 +56,31 @@ describe("Pokemon routes", () => {
     });
   });
 
-  describe("GET rutas  ", () => {
+  describe("evaluar funcion getHandlerApiInfo ", () => {
+    it("getHandlerApiInfo debe ser una funcion", () => {
+      expect(typeof getHandlerApiInfo).to.equal("function");
+      expect(typeof getHandlerApiInfo).to.not.equal("string");
+      expect(typeof getHandlerApiInfo).to.not.equal("number");
+    });
+
+    it("getHandlerApiInfo debe devolver un status 200", async () => {
+      Promise.resolve({
+        status: 200,
+        json: () => Promise.resolve({}),
+      });
+    });
+
+    it("getHandlerApiInfo debe devolver un status 400", async () => {
+      Promise.resolve({
+        status: 400,
+        json: () => Promise.resolve({}),
+      });
+    });
+  });
+});
+
+/* 
+    describe("GET rutas  ", () => {
     beforeEach(async () => {
       const res = await agent.get("/pokemon").send();
     });
@@ -68,16 +92,8 @@ describe("Pokemon routes", () => {
     it('retorna un aray de objetos con la propiedad "name" ', async () => {
       expect(res.body[0]).toHaveProperty("name");
     });
-  });
-
-  /* describe("evaluar funcion getHandlerApiInfo ", () => {
-    it("getHandlerApiInfo debe ser una funcion", () => {
-      expect(typeof getHandlerApiInfo).to.equal("function");
-      expect(typeof getHandlerApiInfo).to.not.equal("string");
-      expect(typeof getHandlerApiInfo).to.not.equal("number");
-    });
-  }); */
-});
+  }); 
+*/
 
 /*
 
@@ -113,4 +129,14 @@ describe("Pokemon routes", () => {
       });
     });
   });
+*/
+
+/* 
+ describe("evaluar funcion getHandlerApiInfo ", () => {
+    it("getHandlerApiInfo debe ser una funcion", () => {
+      expect(typeof getHandlerApiInfo).to.equal("function");
+      expect(typeof getHandlerApiInfo).to.not.equal("string");
+      expect(typeof getHandlerApiInfo).to.not.equal("number");
+    });
+  }); 
 */

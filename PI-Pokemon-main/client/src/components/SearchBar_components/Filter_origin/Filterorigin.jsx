@@ -1,16 +1,16 @@
-import React /* , { useEffect } */ from "react";
-import { /*  useSelector, */ useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { filterApiBdd } from "../../../redux/action/action";
 import style from "./Filterorigin.module.css";
 
 function Filterorigin() {
   const dispatch = useDispatch();
-  // const pokemon = useSelector((state) => state.pokemons);
+  const pokemon = useSelector((state) => state.pokemons);
 
-  // useEffect(() => {
-  //   dispatch(filterApiBdd(pokemon));
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(filterApiBdd(pokemon));
+    // eslint-disable-next-line
+  }, [dispatch]);
 
   const handlerFilterApiBdd = (event) => {
     event.preventDefault();

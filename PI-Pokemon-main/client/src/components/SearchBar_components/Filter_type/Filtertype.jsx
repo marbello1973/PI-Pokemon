@@ -13,7 +13,7 @@ function Filtertype() {
   };
   useEffect(() => {
     dispatch(filterType(pokemon));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, []);
   return (
     <div>

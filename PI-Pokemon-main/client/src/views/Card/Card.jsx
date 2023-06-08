@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import imagen from "../../assest/pikachu.png";
 import styles from "./Card.module.css";
+import Goback from "../../components/SearchBar_components/Regresar/Goback";
 
 function Card() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function Card() {
         return (
           <div key={id} className={styles.containerCard}>
             <div>
+              <Goback />
               <p className={styles.title}>Details Pokemon</p>
             </div>
             <div>
