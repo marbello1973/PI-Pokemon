@@ -4,6 +4,7 @@ import style from "./Paginado.module.css";
 function Paginado({ pokePage, pokemon, paginado }) {
   const numeroPagina = [];
   for (let i = 1; i <= Math.ceil(pokemon / pokePage); i++) {
+    console.log(pokePage);
     numeroPagina.push(i);
   }
   return (
